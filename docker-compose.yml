@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    # Mount your local files into the container
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+    # Ensure Docker uses host’s network file changes
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
